@@ -1,0 +1,14 @@
+# dependencies
+/node_modules
+/dist
+
+# npm
+npm-debug.log
+
+# IDE
+.vscode/*
+.idea/*
+
+#System Files
+.DS_Store
+Thumbs.db
