@@ -8,7 +8,7 @@
     "start": "npm run build && node dist/server.js",
     "server": "node dist/server.js",
     "clean": "rimraf dist",
-    "build": "npm run clean &&babel . -d dist --ignore spec.js,node_modules"
+    "build": "npm run clean &&babel . -d dist --ignore spec.js,node_modules,web"
   },
   "author": "",
   "license": "ISC",

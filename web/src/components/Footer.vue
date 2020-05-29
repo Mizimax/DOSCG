@@ -1,0 +1,34 @@
+<template>
+	<div class="footer-wrapper">
+		<div class="footer-container">
+			Allright reserved DOSCG Since : 2020
+		</div>
+	</div>
+</template>
+
+<script>
+  export default {
+    name: 'Footer',
+  }
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+
+	@import "../scss/_variables.scss";
+
+	.footer-wrapper {
+		width: 100%;
+		background: $primary;
+
+		> .footer-container {
+			font-size: 15px;
+			max-width: 960px;
+			width: 100%;
+			padding: 15px;
+			text-align: center;
+			color: white;
+			margin: 0 auto;
+		}
+	}
+</style>
