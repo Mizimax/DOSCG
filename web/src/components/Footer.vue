@@ -19,6 +19,9 @@
 
 	.footer-wrapper {
 		width: 100%;
+		position: sticky;
+		top: 100%;
+		left: 0;
 		background: $primary;
 
 		> .footer-container {
