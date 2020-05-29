@@ -1,6 +1,6 @@
 <template>
 	<div>
-
+		This is Bc page
 	</div>
 </template>
 

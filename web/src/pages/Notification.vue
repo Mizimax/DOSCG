@@ -1,6 +1,6 @@
 <template>
 	<div>
-
+		This is Notification page
 	</div>
 </template>
 

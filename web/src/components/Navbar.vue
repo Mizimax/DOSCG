@@ -8,10 +8,18 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-        <b-nav-item class="m-nav-item" :to="{ name: 'Series' }">Get Series</b-nav-item>
-        <b-nav-item class="m-nav-item" :to="{ name: 'Series' }">Get BC</b-nav-item>
-        <b-nav-item class="m-nav-item" :to="{ name: 'Series' }">Go Central World</b-nav-item>
-        <b-nav-item class="m-nav-item" :to="{ name: 'Series' }">Line Notification</b-nav-item>
+        <b-nav-item class="m-nav-item" :to="{ name: 'Series' }" :active='$route.name =="Series"'>
+          Get Series
+        </b-nav-item>
+        <b-nav-item class="m-nav-item" :to="{ name: 'Bc' }" :active='$route.name =="Bc"'>
+          Get BC
+        </b-nav-item>
+        <b-nav-item class="m-nav-item" :to="{ name: 'CentralWorld' }" :active='$route.name =="CentralWorld"'>
+          Go Central World
+        </b-nav-item>
+        <b-nav-item class="m-nav-item" :to="{ name: 'Notification' }" :active='$route.name =="Notification"'>
+          Line Notification
+        </b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
@@ -39,7 +47,7 @@ export default {
         font-size: 15px;
         padding: 10px 20px;
 
-        &:hover {
+        &:hover, &.active {
           color: $primary;
           background: $secondary;
           border-radius: 20px;

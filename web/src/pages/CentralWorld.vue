@@ -1,6 +1,6 @@
 <template>
 	<div>
-
+		This is Central World page
 	</div>
 </template>
 
