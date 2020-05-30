@@ -8,7 +8,7 @@ import ApiRoute from './routes/api.route'
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const app = express()
-const port = Number(process.env.PORT || 8080)
+const port = Number(process.env.PORT || 8000)
 
 if(process.env.NODE_ENV == 'development') {
   app.use(morgan('dev'));
