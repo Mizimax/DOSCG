@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="m-container">
 		This is Series page
 	</div>
 </template>
@@ -10,6 +10,9 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+	.m-container {
+		margin: 20px;
+		text-align: center;
+	}
 </style>
