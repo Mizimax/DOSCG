@@ -20,10 +20,19 @@ const getters = {
 
 // actions
 const actions = {
-  async fetchBc({ commit }, a, ab, ac) {
-    await Axios.post(bcApiUrl, { a, ab, ac })
-      .then(res => commit("fetchBc", { res }))
-      .catch(err => console.log(err));
+  fetchBc({ commit }, a, ab, ac) {
+    return new Promise((resolve, reject) => {
+      Axios.post(bcApiUrl, { a, ab, ac })
+        .then(res => {
+            commit("fetchBc", { res })
+            resolve(res);
+          }
+        )
+        .catch(err => {
+          console.log(err)
+          reject(err)
+        });
+    })
   },
 
   setInputEquation({ commit }, formInput) {
