@@ -1,9 +1,9 @@
 <template>
   <div class="m-container">
     <p>
-      If A = <input type="number" v-model="a"><br/>
-      A + B = <input type="number" v-model="ab"><br/>
-      A + C = <input type="number" v-model="ac">
+      If A = <input type="number" v-model.number="inputEquation['a']"><br/>
+      A + B = <input type="number" v-model.number="inputEquation['ab']"><br/>
+      A + C = <input type="number" v-model.number="inputEquation['ac']">
       <br/>
     </p>
     <div v-if="isLoaded">
@@ -24,48 +24,61 @@
 
   export default {
     name    : 'Bc',
-    computed: mapGetters('bc', {
-      b: 'getB',
-      c: 'getC',
-    }),
+    computed: {
+      ...mapGetters('bc',
+        {
+          b         : 'getB',
+          c         : 'getC',
+          equation: 'getEquation'
+        }
+      )
+    },
     methods : {
-      ...mapActions('bc', [
-        'fetchBc',
-      ]),
+      ...
+        mapActions('bc', [
+          'fetchBc',
+          'setInputEquation',
+        ]),
 
-      fetchNewBc: function (a, b, c) {
-        this.isLoaded = false
-        this.fetchBc(a, b, c).then(() => {
-          this.isLoaded = true
-        }).catch(error => {
+      fetchNewBc: function (equation) {
           this.isLoaded = false
-          this.errorLoading = error.message
-        })
-      },
-    },
+          this.fetchBc(equation).then(() => {
+            this.isLoaded = true
+          }).catch(error => {
+            this.isLoaded     = false
+            this.errorLoading = error.message
+          })
+        }
+
+      ,
+    }
+    ,
     watch   : {
-      a : function (val) {
-        this.fetchNewBc(val, this.ab, this.bc)
-      },
-      ab: function (val) {
-        this.fetchNewBc(this.a, val, this.ac)
-      },
-      ac: function (val) {
-        this.fetchNewBc(this.a, this.ab, val)
-      },
-    },
+      inputEquation: {
+        handler(val) {
+          this.setInputEquation(val)
+          this.fetchNewBc(val)
+        },
+        deep: true
+      }
+    }
+    ,
     data() {
       return {
-        a           : 21,
-        ab          : 23,
-        ac          : -21,
-        isLoaded    : false,
-        errorLoading: '',
+        inputEquation: {
+          a : 21,
+          ab: 23,
+          ac: -21,
+        },
+        isLoaded     : false,
+        errorLoading : '',
       }
-    },
+    }
+    ,
     created() {
-      this.fetchNewBc(this.a, this.ab, this.bc)
-    },
+      this.fetchNewBc(this.inputEquation)
+    }
+    ,
   }
 </script>
 

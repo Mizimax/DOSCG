@@ -4,8 +4,12 @@ const bcApiUrl = 'http://localhost:8000/api/compute/bc'
 
 // initial state
 const state = () => ({
-  bcEquation: {ab: 0, bc: 0},
-  bc: { b: 0, c: 0 }
+  bcEquation: {
+    a : 21,
+    ab: 23,
+    ac: -21,
+  },
+  bc        : { b: 0, c: 0 },
 })
 
 // getters
@@ -15,23 +19,26 @@ const getters = {
   },
   getC: (state) => {
     return state.bc.c
+  },
+  getEquation: (state) => {
+    return state.bcEquation
   }
 }
 
 // actions
 const actions = {
-  fetchBc({ commit }, a, ab, ac) {
+  fetchBc({ commit }, equation) {
     return new Promise((resolve, reject) => {
-      Axios.post(bcApiUrl, { a, ab, ac })
+      Axios.post(bcApiUrl, equation)
         .then(res => {
-            commit("fetchBc", { res })
-            resolve(res);
-          }
+            commit('fetchBc', { res })
+            resolve(res)
+          },
         )
         .catch(err => {
           console.log(err)
           reject(err)
-        });
+        })
     })
   },
 
@@ -43,12 +50,12 @@ const actions = {
 // mutations
 const mutations = {
   fetchBc(state, { res }) {
-    state.bc = res.data;
+    state.bc = res.data
   },
 
-  setInputEquation(state, { formInput }) {
+  setInputEquation(state, formInput) {
     state.bcEquation = formInput
-  }
+  },
 }
 
 export default {
@@ -56,5 +63,5 @@ export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 }

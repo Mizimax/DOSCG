@@ -4,7 +4,7 @@ const seriesApiUrl = 'http://localhost:8000/api/compute/series'
 
 // initial state
 const state = () => ({
-  inputSeries: [],
+  inputSeries: [5,9,15,23],
   series: []
 })
 
@@ -12,15 +12,27 @@ const state = () => ({
 const getters = {
   getSeries: (state) => {
     return state.series
+  },
+  getInputSeries: (state) => {
+    return state.inputSeries
   }
 }
 
 // actions
 const actions = {
-  async fetchSeries({ commit }) {
-    await Axios.post(seriesApiUrl)
-      .then(res => commit("fetchSeries", { res }))
-      .catch(err => console.log(err));
+  fetchSeries({ commit }, inputSeries) {
+    return new Promise((resolve, reject) => {
+      Axios.post(seriesApiUrl, inputSeries)
+        .then(res => {
+            commit('fetchSeries', { res })
+            resolve(res)
+          },
+        )
+        .catch(err => {
+          console.log(err)
+          reject(err)
+        })
+    })
   },
 
   setInputSeries({ commit }, formInput) {
@@ -31,10 +43,10 @@ const actions = {
 // mutations
 const mutations = {
   fetchSeries(state, { res }) {
-    state.series = res.data;
+    state.series = res.data.data;
   },
 
-  setInputSeries(state, { formInput }) {
+  setInputSeries(state, formInput) {
     state.inputSeries = formInput
   }
 }
