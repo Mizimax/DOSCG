@@ -36,8 +36,8 @@ const actions = {
           },
         )
         .catch(err => {
-          console.log(err)
-          reject(err)
+          console.log(err.response.data)
+          reject(err.response.data)
         })
     })
   },
@@ -50,7 +50,7 @@ const actions = {
 // mutations
 const mutations = {
   fetchBc(state, { res }) {
-    state.bc = res.data
+    state.bc = res.data.data
   },
 
   setInputEquation(state, formInput) {

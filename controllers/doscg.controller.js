@@ -6,9 +6,16 @@ export default class DoscgController{
     const inputs = req.body;
     const doscg = new Doscg();
 
-    const result = doscg.computeSeries(inputs.series);
+    const result = doscg.computeSeries(inputs);
 
-    res.status(200).json({
+    if(result.length === 0) {
+      res.status(400).json({
+        status: 400,
+        message: "Can't compute this series !"
+      })
+    }
+
+    return res.status(200).json({
       status: 200,
       message: "You got series !",
       data: result
@@ -19,9 +26,9 @@ export default class DoscgController{
     const inputs = req.body;
     const doscg = new Doscg();
 
-    const result = doscg.computeBC(inputs.a, inputs.equationAb, inputs.equationAc);
+    const result = doscg.computeBC(inputs.a, inputs.ab, inputs.ac);
 
-    res.status(200).json({
+    return res.status(200).json({
       status: 200,
       message: "You got B,C !",
       data: result
@@ -31,13 +38,19 @@ export default class DoscgController{
   getBestPathToCW(req, res, next){
     const doscg = new Doscg();
 
-    const result = doscg.getBestPathToCW('Central World');
-
-    res.status(200).json({
-      status: 200,
-      message: "You got best path to Central world !",
-      data: result
-    })
+    doscg.getBestPathToCW('central+world+thailand').then(response => {
+      res.status(200).json({
+        status: 200,
+        message: "You got best path to Central world !",
+        data: response.data.routes[0].legs[0].steps
+      })
+    }).catch(error => {
+      console.log('>> error: ', error)
+      res.status(400).json({
+        status: 400,
+        message: "Request error !"
+      })
+    });
   }
 
   getNotificationWhenNoAnswer(req, res, next){
@@ -45,7 +58,7 @@ export default class DoscgController{
 
     const result = doscg.getNotificationWhenNoAnswer();
 
-    res.status(200).json({
+    return res.status(200).json({
       status: 200,
       message: "You got notification because of no answer !",
       data: result

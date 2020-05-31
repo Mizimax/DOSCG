@@ -8,7 +8,7 @@
       <div v-for="(no, index) in series" :key="`no-${index}`">
         <span v-if="index == 0">X = </span>
         <span v-else-if="index == 1">Y = </span>
-        <span v-else-if="index == index.length-1">Z = </span>
+        <span v-else-if="index == series.length-1">Z = </span>
         {{ no }}
       </div>
     </div>
