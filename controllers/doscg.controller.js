@@ -66,8 +66,6 @@ export default class DoscgController {
       doscg.getNotificationWhenNoAnswer()
     })
 
-    console.log(req.body);
-
     let reply_token = req.body.events[0].replyToken
 
     return doscg.lineBotAnswer(reply_token).then(data => {
