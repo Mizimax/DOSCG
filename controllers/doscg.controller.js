@@ -1,6 +1,6 @@
 import Doscg from '../models/doscg.model'
 
-export default class DoscgController{
+export default class DoscgController {
 
   computeSeries(req, res, next) {
     const inputs = req.body
@@ -77,3 +77,4 @@ export default class DoscgController{
     })
 
   }
+}
