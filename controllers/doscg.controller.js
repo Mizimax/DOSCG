@@ -35,25 +35,45 @@ export default class DoscgController {
     })
   }
 
-  getBestPathToCW(req, res, next) {
+  async getBestPathToCW(req, res, next) {
     const doscg = new Doscg()
 
-    return doscg.getBestPathToCW('central+world+thailand').then(response => {
+    try {
+      const response = await doscg.getBestPathToCW('central+world+thailand')
       return res.status(200).json({
         status : 200,
         message: 'You got best path to Central world !',
         data   : response.data.routes[0].legs[0].steps,
       })
-    }).catch(error => {
+    } catch (error) {
       console.log('>> error: ', error)
       return res.status(400).json({
         status : 400,
         message: 'Request error !',
       })
-    })
+    }
   }
 
-  getNotificationWhenNoAnswer(req, res, next) {
+  async getNotificationWhenNoAnswer(req, res, next) {
+    const doscg = new Doscg()
+    try {
+      //Find item
+      let itemData = await doscg.getNotificationWhenNoAnswer()
+      return res.status(200).json({
+        status     : 200,
+        message    : 'Get notifications !',
+        data: itemData,
+      })
+    } catch (error) {
+      return res.status(400).json({
+        status     : 400,
+        message    : 'Error get notifications !',
+        error: error
+      })
+    }
+  }
+
+  async addNotificationWhenNoAnswer(req, res, next) {
     const doscg = new Doscg()
     if (!req.body.hasOwnProperty('events')) {
       return res.status(200).json({
@@ -61,26 +81,40 @@ export default class DoscgController {
         message: 'MaxBot only accept !',
       })
     }
+    let reply_token = req.body.events[0].replyToken
+    let name = req.body.events[0].source.userId
 
-    req.setTimeout(10000, () => {
-      doscg.getNotificationWhenNoAnswer()
+    req.setTimeout(10000, async () => {
+
+      try {
+        let itemData = await doscg.addNotificationWhenNoAnswer(name)
+        return res.status(200).json({
+          status     : 200,
+          message    : 'Add notifications !'
+        })
+      } catch (error) {
+        return res.status(400).json({
+          status     : 400,
+          message    : 'Error add notifications !',
+        })
+      }
+
     })
 
-    let reply_token = req.body.events[0].replyToken
-
-    return doscg.lineBotAnswer(reply_token).then(data => {
+    try {
+      const data = await doscg.lineBotAnswer(reply_token)
       return res.status(200).json({
         status     : 200,
         message    : 'Sending message !',
         apiResponse: data,
       })
-    }).catch(error => {
+    } catch (error) {
       return res.status(200).json({
         status     : 400,
         message    : 'Error sending message !',
         apiResponse: error,
       })
-    })
+    }
 
   }
 }

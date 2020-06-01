@@ -1,4 +1,6 @@
 import axios from 'axios'
+import {} from 'dotenv/config'
+import connection from '../connection'
 
 export default class Doscg {
 
@@ -47,17 +49,46 @@ export default class Doscg {
 
   getBestPathToCW(goTo) {
     const fromScg = 'SCG+Bangsue'
-    const apiKey  = 'AIzaSyBuZw-uZ7-QCzHUXdmk7JxIdZRWK6jqknE'
+    const apiKey  = process.env.GOOGLE_API
     let apiUrl    = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + fromScg + '&destination=' + goTo + '&key=' + apiKey
     return axios.get(apiUrl)
   }
 
-  getNotificationWhenNoAnswer() {
+  addNotificationWhenNoAnswer(name) {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        `
+          INSERT INTO line_noti(username, noti_type)
+          VALUES(?,?)
+        `, function (err, result) {
+          if (err) {
+            return reject(err)
+          }
+          resolve(result)
+        },
+      )
+    })
+  }
 
+  getNotificationWhenNoAnswer() {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        `
+          SELECT *
+          FROM line_noti
+          WHERE noti_type = 1
+        `, function (err, result) {
+          if (err) {
+            return reject(err)
+          }
+          resolve(result)
+        },
+      )
+    })
   }
 
   lineBotAnswer(reply_token) {
-    const channelToken = 'R2aU/WXyc7BpyPj+8r6RTo6NnHof4D0fBk2iaYoX4gQvM7GnsOAil6yU49pLA1R2E5Na5wa1llckqmb5/y0o+ArzDmhJqQeFXAp9i4eEGYrsILmV5DAxIzoRqbf1fVNv0OAISK1uWyDOsKVzHoBxqAdB04t89/1O/w1cDnyilFU='
+    const channelToken = process.env.CHANNEL_TOKEN
     let headers        = {
       'Content-Type' : 'application/json',
       'Authorization': 'Bearer {' + channelToken + '}',

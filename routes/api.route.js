@@ -10,6 +10,8 @@ router.post('/compute/bc', doscgController.computeBC)
 
 router.get('/map/bpt/cw', doscgController.getBestPathToCW)
 
-router.post('/line/noanswer', doscgController.getNotificationWhenNoAnswer)
+router.get('/line/noanswer', doscgController.getNotificationWhenNoAnswer)
+
+router.post('/line/noanswer', doscgController.addNotificationWhenNoAnswer)
 
 export default router

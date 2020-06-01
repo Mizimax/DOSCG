@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "postinstall": "npm run build",
-    "start": "node dist/server.js",
-    "server": "node dist/server.js",
+    "start": "node -r dotenv/config dist/server.js",
+    "server": "node -r dotenv/config dist/server.js",
     "clean": "rimraf dist",
     "build": "npm run clean &&babel . -d dist --ignore spec.js,node_modules,web"
   },
@@ -17,12 +17,20 @@
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "rimraf": "^3.0.2"
   }
 }
