@@ -38,15 +38,15 @@ export default class DoscgController{
   getBestPathToCW(req, res, next){
     const doscg = new Doscg();
 
-    doscg.getBestPathToCW('central+world+thailand').then(response => {
-      res.status(200).json({
+    return doscg.getBestPathToCW('central+world+thailand').then(response => {
+      return res.status(200).json({
         status: 200,
         message: "You got best path to Central world !",
         data: response.data.routes[0].legs[0].steps
       })
     }).catch(error => {
       console.log('>> error: ', error)
-      res.status(400).json({
+      return res.status(400).json({
         status: 400,
         message: "Request error !"
       })
@@ -55,17 +55,23 @@ export default class DoscgController{
 
   getNotificationWhenNoAnswer(req, res, next){
     const doscg = new Doscg();
-    req.setTimeout( () =>{
+    let reply_token = req.body.events[0].replyToken
+
+    req.setTimeout( 10000,() =>{
       doscg.getNotificationWhenNoAnswer();
-    },10000);
+      return res.status(400).json({
+        status: 400,
+        message: "You got notification because of no answer !"
+      })
+    });
 
-    doscg.lineBotAnswer();
-
-    return res.status(200).json({
-      status: 200,
-      message: "You got notification because of no answer !",
-      data: result
-    })
+    return doscg.lineBotAnswer(reply_token).then(data => {
+      return res.status(200).json({
+        status: 200,
+        message: "Sending message !",
+        apiResponse: data
+      })
+    });
   }
 
 }
