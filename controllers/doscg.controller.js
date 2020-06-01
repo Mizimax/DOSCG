@@ -55,7 +55,15 @@ export default class DoscgController{
 
   getNotificationWhenNoAnswer(req, res, next){
     const doscg = new Doscg();
-    let reply_token = req.body.events[0].replyToken
+    if(req.body.hasOwnProperty('events')) {
+      let reply_token = req.body.events[0].replyToken
+    }
+    else {
+      return res.status(200).json({
+        status: 200,
+        message: "MaxBot only accept !",
+      })
+    }
 
     req.setTimeout( 10000,() =>{
       doscg.getNotificationWhenNoAnswer();
