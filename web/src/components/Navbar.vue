@@ -8,6 +8,9 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
+        <b-nav-item class="m-nav-item" :to="{ name: 'MyCV' }" :active='$route.name =="MyCV"'>
+          My CV
+        </b-nav-item>
         <b-nav-item class="m-nav-item" :to="{ name: 'Series' }" :active='$route.name =="Series"'>
           Get Series
         </b-nav-item>

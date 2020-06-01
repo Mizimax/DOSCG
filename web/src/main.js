@@ -3,6 +3,7 @@ import Bc from './pages/Bc'
 import Notification from './pages/Notification'
 import CentralWorld from './pages/CentralWorld'
 import Series from './pages/Series'
+import MyCV from './pages/MyCV'
 import App from './App.vue'
 import { BootstrapVue } from 'bootstrap-vue'
 import VueRouter from 'vue-router'
@@ -20,6 +21,7 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false
 
 const routes = [
+  { path: '/mycv', component: MyCV, name: 'MyCV' },
   { path: '/series', component: Series, name: 'Series' },
   { path: '/bc', component: Bc, name: 'Bc' },
   { path: '/centralworld', component: CentralWorld, name: 'CentralWorld' },
