@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import bc from './modules/bc'
 import cw from './modules/cw'
+import noti from './modules/noti'
 import series from './modules/series'
 
 Vue.use(Vuex)
@@ -12,7 +13,8 @@ export default new Vuex.Store({
   modules: {
     series,
     bc,
-    cw
+    cw,
+    noti
   },
   strict: debug
 })
