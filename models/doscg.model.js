@@ -52,7 +52,11 @@ export default class Doscg {
     return axios.get(apiUrl);
   }
 
-  getNotificationWhenNoAnswer(){
+  getNotificationWhenNoAnswer() {
+
+  }
+
+  lineBotAnswer() {
 
   }
 

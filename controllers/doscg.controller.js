@@ -55,8 +55,11 @@ export default class DoscgController{
 
   getNotificationWhenNoAnswer(req, res, next){
     const doscg = new Doscg();
+    req.setTimeout( () =>{
+      doscg.getNotificationWhenNoAnswer();
+    },10000);
 
-    const result = doscg.getNotificationWhenNoAnswer();
+    doscg.lineBotAnswer();
 
     return res.status(200).json({
       status: 200,
