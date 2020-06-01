@@ -60,15 +60,15 @@ export default class DoscgController {
       //Find item
       let itemData = await doscg.getNotificationWhenNoAnswer()
       return res.status(200).json({
-        status     : 200,
-        message    : 'Get notifications !',
-        data: itemData,
+        status : 200,
+        message: 'Get notifications !',
+        data   : itemData,
       })
     } catch (error) {
       return res.status(400).json({
-        status     : 400,
-        message    : 'Error get notifications !',
-        error: error
+        status : 400,
+        message: 'Error get notifications !',
+        error  : error,
       })
     }
   }
@@ -82,39 +82,40 @@ export default class DoscgController {
       })
     }
     let reply_token = req.body.events[0].replyToken
-    let name = req.body.events[0].source.userId
+    let name        = req.body.events[0].source.userId
 
     req.setTimeout(10000, async () => {
 
       try {
         let itemData = await doscg.addNotificationWhenNoAnswer(name)
         return res.status(200).json({
-          status     : 200,
-          message    : 'Add notifications !'
+          status : 200,
+          message: 'Add notifications !',
         })
       } catch (error) {
         return res.status(400).json({
-          status     : 400,
-          message    : 'Error add notifications !',
+          status : 400,
+          message: 'Error add notifications !',
         })
       }
 
     })
-
-    try {
-      const data = await doscg.lineBotAnswer(reply_token)
-      return res.status(200).json({
-        status     : 200,
-        message    : 'Sending message !',
-        apiResponse: data,
-      })
-    } catch (error) {
-      return res.status(200).json({
-        status     : 400,
-        message    : 'Error sending message !',
-        apiResponse: error,
-      })
-    }
+    setTimeout(async () => {
+      try {
+        const data = await doscg.lineBotAnswer(reply_token)
+        return res.status(200).json({
+          status     : 200,
+          message    : 'Sending message !',
+          apiResponse: data,
+        })
+      } catch (error) {
+        return res.status(200).json({
+          status     : 400,
+          message    : 'Error sending message !',
+          apiResponse: error,
+        })
+      }
+    }, 12000)
 
   }
 }
