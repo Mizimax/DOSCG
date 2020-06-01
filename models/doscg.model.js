@@ -6,34 +6,30 @@ export default class Doscg {
 
   computeSeries(inputArr) {
     let inputLength      = inputArr.length
-    let diffValue        = 0
+    let diffValue        = []
     let currentDiffValue = 0
     let resultArr        = []
-    let d                = 0
-    let r                = 0
+    let r               = 0
     let currentR         = 0
     let firstValue       = 0
     for (let i = 0; i < inputLength - 1; i++) {
       currentDiffValue = inputArr[i + 1] - inputArr[i]
       if (i !== 0) {
-        currentR = currentDiffValue - diffValue
+        currentR = currentDiffValue - diffValue[diffValue.length-1]
       }
       if (r !== 0 && r !== currentR) {
         return []
       }
       r         = currentR
-      diffValue = currentDiffValue
+      diffValue.push(currentDiffValue);
     }
-    d = inputArr[inputLength - 1] - Math.pow(r, (6 - 1))
-    console.log('>> diffValue: ', diffValue)
-    firstValue = (inputArr[0] - d) / Math.pow(r, (3 - 1)) + d
-    console.log('>> d: ', d)
-    console.log('>> r: ', r)
+    let secondNo = inputArr[0]-(diffValue[0]+(r*(-1)));
     resultArr = [
-      firstValue,
-      (firstValue - d) * Math.pow(r, (2 - 1)) + d,
+      secondNo-(diffValue[0]+(r*(-2))),
+      secondNo,
       ...inputArr,
-      (firstValue - d) * Math.pow(r, (6 - 1)) + d,
+      inputArr[inputLength-1]+(diffValue[diffValue.length-1]+(r*(1)))
+
     ]
     return resultArr
   }

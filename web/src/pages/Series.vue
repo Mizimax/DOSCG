@@ -1,8 +1,10 @@
 <template>
   <div class="m-container">
+    Input :
     <div v-for="(inputSerie, index) in inputSeries" :key="`input-${index}`">
       <input type="number" v-model.number="inputSeries[index]"><br/>
     </div>
+    <br/>
     The result is <br/>
     <div v-if="isLoaded">
       <div v-for="(no, index) in series" :key="`no-${index}`">
