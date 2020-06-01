@@ -74,6 +74,12 @@ export default class DoscgController {
         message    : 'Sending message !',
         apiResponse: data,
       })
+    }).catch(error => {
+      return res.status(400).json({
+        status     : 400,
+        message    : 'Error sending message !',
+        apiResponse: error,
+      })
     })
 
   }

@@ -72,11 +72,6 @@ export default class Doscg {
     return axios.post('https://api.line.me/v2/bot/message/reply', body, {
       headers: headers,
     })
-      .then(response => {
-        if (response.statusCode === 200) {
-          return response.data
-        }
-      })
   }
 
 }
