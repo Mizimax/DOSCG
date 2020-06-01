@@ -10,6 +10,6 @@ const config = {
   connectionLimit: 100,
 };
 
-const connection = mysql.createConnection(config);
+const connection = mysql.createPool(config);
 
 export default connection;
