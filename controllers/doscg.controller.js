@@ -84,11 +84,10 @@ export default class DoscgController {
     let reply_token = req.body.events[0].replyToken
     let name        = req.body.events[0].source.userId
 
-    req.setTimeout(10000, async () => {
+    setTimeout(async () => {
 
       try {
         let itemData = await doscg.addNotificationWhenNoAnswer(name)
-        console.log('>> itemData: ', itemData)
         return res.status(200).json({
           status : 200,
           message: 'Add notifications !',
@@ -100,7 +99,7 @@ export default class DoscgController {
         })
       }
 
-    })
+    }, 10000)
     setTimeout(async () => {
       try {
         const data = await doscg.lineBotAnswer(reply_token)

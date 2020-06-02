@@ -53,10 +53,7 @@ export default class Doscg {
   addNotificationWhenNoAnswer(name) {
     return new Promise((resolve, reject) => {
       connection.query(
-        `
-          INSERT INTO line_noti(username, noti_type)
-          VALUES(?,?)
-        `, function (err, result) {
+        `INSERT INTO line_noti(user_name, noti_type) VALUES(?,?)`, [name, 1], function (err, result) {
           if (err) {
             return reject(err)
           }
