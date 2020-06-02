@@ -1,6 +1,7 @@
 <template>
   <div class="m-container">
-    <img src="../assets/maxbot.png" alt="">
+    MaxBot QR
+    <img src="../assets/maxbot.png" width="200" alt="">
     <div class="noti-wrapper" v-for="(noti, index) in notis" :key="`noti-${index}`">
       ไม่ได้ตอบ user : {{ noti.user_name }} เกิน 10 วินาที
     </div>
