@@ -1,6 +1,7 @@
 import Axios from 'axios'
+import urljoin from 'url-join'
 
-const cwApiUrl = 'http://localhost:8000/api/map/bpt/cw'
+const cwApiUrl = urljoin(process.env.VUE_APP_API_URL, '/api/map/bpt/cw')
 
 // initial state
 const state = () => ({

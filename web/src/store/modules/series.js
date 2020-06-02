@@ -1,6 +1,7 @@
 import Axios from 'axios'
+import urljoin from 'url-join'
 
-const seriesApiUrl = 'http://localhost:8000/api/compute/series'
+const seriesApiUrl = urljoin(process.env.VUE_APP_API_URL, '/api/compute/series')
 
 // initial state
 const state = () => ({

@@ -1,6 +1,7 @@
 import Axios from 'axios'
+import urljoin from 'url-join'
 
-const notiApiUrl = 'http://localhost:8000/api/line/noanswer'
+const notiApiUrl = urljoin(process.env.VUE_APP_API_URL, '/api/line/noanswer')
 
 // initial state
 const state = () => ({

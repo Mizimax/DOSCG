@@ -1,6 +1,7 @@
 import Axios from 'axios'
+import urljoin from 'url-join'
 
-const bcApiUrl = 'http://localhost:8000/api/compute/bc'
+const bcApiUrl = urljoin(process.env.VUE_APP_API_URL, '/api/compute/bc')
 
 // initial state
 const state = () => ({
