@@ -31,6 +31,7 @@ API : `https://maxangbot.herokuapp.com/`
 
 ### Config 
 `Change 'env-example' file to '.env'`
+
 `Set your api url variable example. 'VUE_APP_API_URL=http://localhost:8000/'`
 
 ### To install module
