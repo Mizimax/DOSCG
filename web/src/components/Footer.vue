@@ -1,7 +1,7 @@
 <template>
 	<div class="footer-wrapper">
 		<div class="footer-container">
-			Allright reserved DOSCG Since : 2020
+			Available on <a href="https://github.com/Mizimax/DOSCG" target="_blank" style="color: white">Github</a>
 		</div>
 	</div>
 </template>
