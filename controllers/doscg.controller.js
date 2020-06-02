@@ -88,6 +88,7 @@ export default class DoscgController {
 
       try {
         let itemData = await doscg.addNotificationWhenNoAnswer(name)
+        console.log('>> itemData: ', itemData)
         return res.status(200).json({
           status : 200,
           message: 'Add notifications !',
