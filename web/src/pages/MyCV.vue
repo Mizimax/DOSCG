@@ -21,12 +21,10 @@
           <div class="header --topic">Introduction</div>
           <p class="content">
             Hello i'm Max. I’ve graduated from KMUTT.
-            I have experience in Freelance job as
-            Full Stack Developer.
-            Laravel, Angular, Ionic are my main skills.
-            but i prefer to use React(Hook).
+            Currently, i've been a software engineer at SCG Digital Office for 2 months.
+            My work skills are Flutter and Flask.
             My english is good at reading, writing.
-            but speaking is beginner.
+            but speaking is beginner. I'm currently improving my English skills.
             I’m familiar with agile process.
             I’m a fast learner, hard worker and
             high responsibility.
@@ -41,16 +39,28 @@
             B.Eng. Computer Engineering
           </p>
         </div>
+        <div class="content-wrapper activity-wrapper">
+          <div class="header --topic">Current work</div>
+          <ul>
+            <li>I've been a Software Engineer at SCG Digital Office for 2 months.</li>
+            <li>Developing mobile application and RESTful API.</li>
+            <li>Flutter(dart), Flask(python) and PostgreSQL.</li>
+            <li>Test Driven Development, CI/CD.</li>
+          </ul>
+        </div>
         <div class="content-wrapper skill-wrapper">
           <div class="header --topic">My skills</div>
           <ul>
-            <li>React(Hook), Redux (Prefer, Moderate)</li>
+            <li>Flutter (Prefer, Moderate)</li>
+            <li>React(Hook), Redux (Moderate)</li>
             <li>Angular 2, 4, 8 (Fluent)</li>
             <li>Ionic (Fluent)</li>
+            <li>Android, Swift (Beginner)</li>
             <li>Vue.js, Vuex (Beginner)</li>
             <li>HTML, CSS, SCSS, Javascript (Fluent)</li>
             <li>PHP Laravel Framework (Fluent)</li>
             <li>Node.js (Moderate)</li>
+            <li>Flask, Python (Beginner)</li>
             <li>Mysql (Fluent)</li>
             <li>Docker (Beginner)</li>
             <li>MongoDB (Beginner)</li>
@@ -67,6 +77,13 @@
       </div>
       <div class="col-12 col-sm-6 work-wrapper">
         <div class="header --topic">Experience</div>
+        <div class="exp-wrapper">
+          <div class="header">SCG Test</div>
+          Online CV, Series calculation, Solve equation, Get Google map route data and Chatbot doesn't answer detection.
+          (Vue.js, Node.js)<br/>
+          <a class="mr-2" href="https://github.com/Mizimax/DOSCG" target="_blank">Github</a>
+          <a href="https://doscgweb.herokuapp.com/" target="_blank">Demo</a>
+        </div>
         <div class="exp-wrapper">
           <div class="header">Vehicle Tracking application</div>
           Vehicle Tracking app is my final project in

@@ -1,7 +1,7 @@
 <template>
 	<div class="footer-wrapper">
 		<div class="footer-container">
-			Available on <a href="https://github.com/Mizimax/DOSCG" target="_blank" style="color: white">Github</a>
+			Powered by Vue.js, Node.js. Available on <a href="https://github.com/Mizimax/DOSCG" target="_blank" style="color: white">Github</a>
 		</div>
 	</div>
 </template>
