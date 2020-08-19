@@ -1,6 +1,6 @@
 <template>
   <b-navbar id="navbar" toggleable="lg" type="dark" variant="primary">
-    <b-navbar-brand href="#">DOSCG</b-navbar-brand>
+    <b-navbar-brand href="#">Maxang.me</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 

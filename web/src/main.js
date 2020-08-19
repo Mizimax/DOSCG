@@ -26,7 +26,7 @@ const routes = [
   { path: '/bc', component: Bc, name: 'Bc' },
   { path: '/centralworld', component: CentralWorld, name: 'CentralWorld' },
   { path: '/notification', component: Notification, name: 'Notification' },
-  { path: '/', redirect: '/series' }
+  { path: '/', redirect: '/mycv' }
 ]
 
 const router = new VueRouter({

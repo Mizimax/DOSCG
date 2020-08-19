@@ -42,7 +42,7 @@
         <div class="content-wrapper activity-wrapper">
           <div class="header --topic">Current work</div>
           <ul>
-            <li>I've been a Software Engineer at SCG Digital Office for 2 months.</li>
+            <li>I've been a Software Engineer at SCG Digital Office for 1.5 months.</li>
             <li>Developing mobile application and RESTful API.</li>
             <li>Flutter(dart), Flask(python) and PostgreSQL.</li>
             <li>Test Driven Development, CI/CD.</li>
@@ -52,7 +52,7 @@
           <div class="header --topic">My skills</div>
           <ul>
             <li>Flutter (Prefer, Moderate)</li>
-            <li>React(Hook), Redux (Moderate)</li>
+            <li>React(Hook) (Moderate)</li>
             <li>Angular 2, 4, 8 (Fluent)</li>
             <li>Ionic (Fluent)</li>
             <li>Android, Swift (Beginner)</li>
